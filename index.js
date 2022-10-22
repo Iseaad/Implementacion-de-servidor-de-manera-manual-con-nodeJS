@@ -15,24 +15,14 @@ mongoose.connect("mongodb+srv://Grupo23:Grupo23@clustergrupo23.gvrtivl.mongodb.n
 //---------------CRUD HACIA LA BD-------------------//
 router.get('/',(req,res)=>{
     console.log("Accediendo a la raiz")
-    res.send("Bienvenido a mi primera API")
+    res.send("Bienvenido a mi primer APIII")
 });
 
-router.post ('/creandoReporte', (req,res)=>{
-    let nuevoDeporte = new Deporte({
-        nombre: req.body.nombre,
-        numeroJugadores: req.body.jugadores,
-        pais: req.body.pais
-    });
-});
+router.post('/creandoDeporte',(req,res)=>{
+    
+}); 
 
 app.use(router);
-app.listen (3000,()=>{  // si la aplicacion se conecta por el puerto 3000 ejecutará la function solicitada
+app.listen (3000,()=>{  
 console.log ("Servidor ejecutandose por el puerto 3000")
-});
-
-app.get('/Grupo23',(req, res)=>{
-    console.log ("ejecutó la app desde la raiz")
-    res.send ("Bienvenido a la pagina pp de la app")
-});
-
+}); 
