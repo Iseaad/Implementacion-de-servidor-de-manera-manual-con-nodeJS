@@ -15,12 +15,32 @@ mongoose.connect("mongodb+srv://Grupo23:Grupo23@clustergrupo23.gvrtivl.mongodb.n
 //---------------CRUD HACIA LA BD-------------------//
 router.get('/',(req,res)=>{
     console.log("Accediendo a la raiz")
-    res.send("Bienvenido a mi primer APIII")
+    res.send("Bienvenido a mi primer API")
 });
 
 router.post('/creandoDeporte',(req,res)=>{
-    
+    let nuevoDeporte = new deporte({
+        nombre: req.body.nombre,
+        numeroJugadores: req.body.jugadores,
+        pais: req.body.pais
+    });
+
+    nuevoDeporte.save((err,datos)=>{
+        if (err){
+            console.log("El dato no se pudo almacenar")
+            res.send("El dato no se pudo almacenar")
+        }else{
+            res.send("Los datos fueron almacenados")
+        }
+    });
 }); 
+
+router.get ('/Deportes',async(req,res)=>{
+
+    const deportes=await deporte.find();
+    res.status(200).json(deportes);
+    res.send("Obteniendo informaciòn de los deportes")      
+});
 
 app.use(router);
 app.listen (3000,()=>{  
