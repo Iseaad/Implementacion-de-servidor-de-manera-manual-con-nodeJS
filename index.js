@@ -39,7 +39,7 @@ router.get ('/Deportes',async(req,res)=>{
 
     const deportes=await deporte.find();
     res.status(200).json(deportes);
-    res.send("Obteniendo informaciòn de los deportes")      
+    res.send("Obteniendo informaciòn de los deportes")  
 });
 
 app.use(router);
