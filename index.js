@@ -42,6 +42,13 @@ router.get ('/Deportes',async(req,res)=>{
     res.send("Obteniendo informaciòn de los deportes")  
 });
 
+router.get('/deporte/:id',async(req,res)=>{
+    const id=req.params.id;
+    const respuesta=await deporte.findById(id);
+    res.status(200).json(respuesta)
+    console.log(req.params.id)
+});
+
 app.use(router);
 app.listen (3000,()=>{  
 console.log ("Servidor ejecutandose por el puerto 3000")
